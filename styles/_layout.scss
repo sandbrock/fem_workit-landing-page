@@ -1,16 +1,83 @@
-header {
+@use './base' as *;
+
+body {
+  font-size: $fs-16;
+  font-weight: $fw-regular;
+  font-family: $ff-base;
+  color: $clr-primary-300;
+  background-color: $clr-neutral-100;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $ff-accent;
+}
+
+.header {
   display: flex;
+  padding: 2rem 1rem;
+  background-color: $clr-primary-400;
+
+  &-action {
+    margin-left: auto;
+  }
+
+  @include media(x-large) {
+    padding-block: 3.5rem;
+  }
 }
 
-.header--action-link {
-  margin-left: auto;
+.hero {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  position: relative;
+  overflow-x: clip;
+  color: $clr-neutral-100;
+  padding: 2rem 1rem;
+  background-color: $clr-primary-400;
+
+  &-header {
+    grid-column: 1 / 8;
+    font-size: $fs-50;
+  }
+
+  &-action {
+    grid-column: 3 / 7;
+    margin: 3rem 0;
+    text-align: center;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    background: $clr-primary-400;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -4rem;
+    transform: translateX(-50%);
+    border-radius: 50% / 0 0 100% 100%;
+    width: 150%;
+    height: 5rem;
+    z-index: 1;
+  }
+
+  &-image {
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    width: 85%;
+    z-index: 4;
+  }
 }
 
-.hero--image {
-  max-width: 100%;
-}
-
-.call-to-action--profile {
-  max-width: 100%;
+.features {
+  margin-top: 15rem;
 }
 

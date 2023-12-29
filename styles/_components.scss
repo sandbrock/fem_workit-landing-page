@@ -1,0 +1,32 @@
+@use './base' as *;
+
+.btn {
+  display: inline-block;
+  padding: 1rem;
+  font-size: $fs-18;
+
+  &-primary {
+    color: $clr-primary-400;
+    background-color: $clr-accent-400;
+    border: 1px solid $clr-accent-400;
+
+    &:hover {
+      color: $clr-accent-400;
+      background-color: $clr-primary-400;
+      cursor: pointer;
+    }
+  }
+
+  &-secondary {
+    color: $clr-neutral-100;
+    text-decoration-line: underline;
+    text-decoration-color: $clr-accent-400;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.5rem;
+
+    &:hover {
+      color: $clr-accent-400;
+      cursor: pointer;
+    }
+  }
+}

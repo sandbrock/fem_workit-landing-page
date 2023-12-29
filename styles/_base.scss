@@ -1,19 +1,191 @@
+@use 'sass:math';
+@use 'sass:map';
+
+//
+// Utility mixins
+//
+@mixin pseudo($type: before, $pos: absolute, $content: '') {
+  position: relative;
+  &::#{$type} {
+    content: $content;
+    position: $pos;
+    @content;
+  }
+}
+
+//
+// Screen sizes
+//
+@function remSize($size) {
+  $remSize: math.div($size, 16px);
+  @return #{remSize}rem;
+}
+
+$breakpoints: (
+        small: remSize(640px),
+        medium: remSize(768px),
+        large: remSize(1024px),
+        x-large: remSize(1280px)
+);
+
+@mixin media($size) {
+  @if map.has-key($breakpoints, $size) {
+    $breakpoint: map-get($breakpoints, $size);
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @error 'the keyword #{$size} is not in the $breakpoints map';
+  }
+}
+
+@mixin media-down($size) {
+  @if map.has-key($breakpoints, $size) {
+    $breakpoint: map-get($breakpoints, $size);
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @error 'the keyword #{$size} is not in the $breakpoints map';
+  }
+}
+
+//
+// Colors
+//
+$clr-neutral-100: hsl(0, 0%, 100%);
+
+$clr-primary-100: hsl(276, 100%, 99%);
+$clr-primary-300: hsl(271, 12%, 34%);
+$clr-primary-400: hsl(273, 85%, 13%);
+
+$clr-accent-400: hsl(150, 100%, 63%);
+
+$colors: (
+        'neutral': (
+                '100': $clr-neutral-100,
+        ),
+        'primary': (
+                '100': $clr-primary-100,
+                '300': $clr-primary-300,
+                '400': $clr-primary-400,
+        ),
+        'accent': (
+                '400': $clr-accent-400,
+        ),
+);
+
+@each $color, $shade-map in $colors {
+  @each $shade, $value in $shade-map {
+    .clr-#{$color}-#{$shade} {
+      color: $value;
+    }
+    .bg-#{$color}-#{$shade} {
+      background-color: $value;
+    }
+  }
+}
+
+//
+// Typography
+//
+$ff-accent: 'Fraunces';
+$ff-base: 'Manrope';
+
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+
 @font-face {
-  font-family: "Fraunces";
-  src: url("../fonts/fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf");
+  font-family: $ff-accent;
+  src: url('fonts/fraunces/static/Fraunces_144pt-SemiBold.ttf') format('ttf');
 }
 
 @font-face {
-  font-family: "manrope";
-  src: url("../fonts/manrope/Manrope-VariableFont_wght.ttf");
+  font-family: $ff-base;
+  src: url('fonts/manrope/static/Manrope-Regular.ttf') format('ttf');
 }
 
-:root {
-  --primary-dark: #24053e;
-  --secondary-dark: #534d62;
-  --primary-light: #44ffa1;
-  --secondary-light: #fcf8ff;
-  --white: #ffffff;
-  --black: #000000;
+$fs-11: 0.6875rem;
+$fs-12: 0.75rem;
+$fs-13: 0.8125rem;
+$fs-14: 0.875rem;
+$fs-16: 1rem;
+$fs-18: 1.125rem;
+$fs-20: 1.25rem;
+$fs-24: 1.5rem;
+$fs-28: 1.75rem;
+$fs-32: 2rem;
+$fs-40: 2.5rem;
+$fs-48: 3rem;
+$fs-50: 3.125rem;
+$fs-56: 3.5rem;
+$fs-60: 3.75rem;
+$fs-64: 4rem;
+$fs-80: 5rem;
+
+$font-sizes: (
+        '11': 0.6875rem,
+        '12': 0.75rem,
+        '13': 0.8125rem,
+        '14': 0.875rem,
+        '16': 1rem,
+        '18': 1.125rem,
+        '20': 1.25rem,
+        '24': 1.5rem,
+        '28': 1.75rem,
+        '32': 2rem,
+        '40': 2.5rem,
+        '48': 3rem,
+        '56': 3.5rem,
+        '60': 3.75rem,
+        '64': 4rem,
+        '80': 5rem,
+);
+
+@each $size-name, $size-value in $font-sizes {
+  .fs-#{$size-name} {
+    font-size: #{$size-value};
+  }
+}
+
+.fw-regular {
+  font-weight: $fw-regular;
+}
+
+.fw-bold {
+  font-weight: $fw-bold;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-color: $clr-accent-400;
+  text-underline-offset: 0.5rem;
+}
+
+//
+// Generic layout
+//
+.break {
+  display: block;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow-x: clip;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 

@@ -11,19 +11,21 @@
 </head>
 <body>
 
-<header>
-    <img class="header--image" src="images/logo-light.svg" alt="logo">
-    <div class="header--action-link">Apply for access</div>
+<header class="header">
+    <img class="header-image" src="images/logo-light.svg" alt="logo">
+    <div class="header-action btn btn-secondary">Apply for access</div>
 </header>
 
 <main>
-    <div class="hero">
-        <h1 class="hero--header">Data <span class="underline">tailored</span> to your needs.</h1>
-        <a href="#" class="btn">Learn more</a>
-        <img class="hero--image" src="images/image-hero.webp" alt="hero">
-    </div>
+    <section class="container hero">
+        <h1 class="hero-header">Data <span class="underline">tailored</span> to your needs.</h1>
+        <div class="hero-action">
+            <div class="btn btn-primary">Learn more</div>
+        </div>
+        <img class="hero-image" src="images/image-hero.webp" alt="hero">
+    </section>
 
-    <div class="features">
+    <section class="container features">
         <h2 class="sr-only">Features List</h2>
         <ol class="features-list">
             <li class="features-list-item">
@@ -58,9 +60,9 @@
                 </div>
             </li>
         </ol>
-    </div>
+    </section>
 
-    <div class="cta-box">
+    <section class="container cta-box">
         <img class="cta-box-image" src="images/image-founder.webp" alt="founder">
         <div class="card">
             <h2 class="card-heading">Be the first to test</h2>
@@ -71,10 +73,10 @@
             </h2>
         </div>
         <a href="#" class="btn">Apply for access</a>
-    </div>
+    </section>
 </main>
 
-<footer>
+<footer class="container">
     <img src="images/logo-dark.svg" alt="logo">
     <div class="social-icons">
         <img src="images/icon-facebook.svg" alt="facebook logo">
