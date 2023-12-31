@@ -98,12 +98,12 @@ $fw-bold: 700;
 
 @font-face {
   font-family: $ff-accent;
-  src: url('fonts/fraunces/static/Fraunces_144pt-SemiBold.ttf') format('ttf');
+  src: url('../fonts/fraunces/static/Fraunces_144pt-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: $ff-base;
-  src: url('fonts/manrope/static/Manrope-Regular.ttf') format('ttf');
+  src: url('../fonts/manrope/static/Manrope-Regular.ttf') format('truetype');
 }
 
 $fs-11: 0.6875rem;
