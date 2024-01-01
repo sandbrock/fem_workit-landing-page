@@ -13,6 +13,23 @@
   }
 }
 
+@mixin curveBackground($background-color: color) {
+  &::after {
+    background-color: $background-color;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -4rem;
+    transform: translateX(-50%);
+    border-radius: 50% / 0 0 100% 100%;
+    width: 150%;
+    height: 5rem;
+    z-index: 1;
+  }
+}
+
 //
 // Screen sizes
 //
@@ -53,13 +70,13 @@ $breakpoints: (
 //
 // Colors
 //
-$clr-neutral-100: hsl(0, 0%, 100%);
+$clr-neutral-100: #FCF8FF;
 
-$clr-primary-100: hsl(276, 100%, 99%);
-$clr-primary-300: hsl(271, 12%, 34%);
-$clr-primary-400: hsl(273, 85%, 13%);
+$clr-primary-100: #FCF8FF;
+$clr-primary-300: #584D62;
+$clr-primary-400: #24053E;
 
-$clr-accent-400: hsl(150, 100%, 63%);
+$clr-accent-400: #44FFA1;
 
 $colors: (
         'neutral': (
