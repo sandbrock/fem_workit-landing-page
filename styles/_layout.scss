@@ -163,3 +163,23 @@ h3 {
     }
   }
 }
+
+.footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+
+  &-logo {
+    display: inline-block;
+  }
+
+  &-social-icons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin: 0 1rem;
+    }
+  }
+}
